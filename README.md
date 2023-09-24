@@ -8,6 +8,21 @@ Installing:
 go get github.com/unixlinuxgeek/coreutil
 ```
 
-```shell
+### Usage
 
+Create app.go fie and insert:
+```shell
+import github.com/unixlinuxgeek/coreutil
+
+func main() {
+  i := coreutil.Installed("ffmpeg")  // i == true
+ 
+  // Do something
+  // ...
+}
+```
+
+```shell
+$ go run app.go
+ffmpeg is installed in "/usr/bin/ffmpeg" 
 ```
