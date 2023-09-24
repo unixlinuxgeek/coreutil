@@ -17,8 +17,7 @@ import github.com/unixlinuxgeek/coreutil
 func main() {
   i := coreutil.Installed("ffmpeg")  // i == true
  
-  // Do something
-  // ...
+  // Do something...
 }
 ```
 
