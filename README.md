@@ -2,7 +2,7 @@
 
 ### GNU Core Utilities helpers for go 
 
-Installing:
+Installing dependencies:
 
 ```shell
 go get github.com/unixlinuxgeek/coreutil
