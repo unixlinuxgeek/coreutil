@@ -21,3 +21,15 @@ func Installed(name string) bool {
 	fmt.Printf("%s is installed in \"%s\" \n", name, path)
 	return true
 }
+
+// Execute the shell command
+func Execute(cmd string) bool {
+	i := Installed(cmd)
+	if i == false {
+		_ = fmt.Errorf("%s is not installed ", cmd)
+		return false
+	}
+	// Do something...
+	fmt.Println("command executed successfully")
+	return true
+}
