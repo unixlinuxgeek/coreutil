@@ -27,16 +27,17 @@ func Installed(name string) bool {
 func Execute(cmd string, args ...string) bool {
 	i := Installed(cmd)
 	if i == false {
-		_ = fmt.Errorf("%s is not installed ", cmd)
-		return false
+		log.Fatalf("%s is not installed ", cmd)
 	}
 	// Do something...
-	c := exec.Command(cmd, args...)
-	stdout, err := c.Output()
-	if err != nil {
-		log.Fatal(err)
+	if len(args) > 0 {
+		c := exec.Command(cmd, args...)
+		stdout, err := c.Output()
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(string(stdout))
 	}
-	fmt.Println(string(stdout))
-	//fmt.Println("command executed successfully")
+	fmt.Println("command executed successfully")
 	return true
 }
