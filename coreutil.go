@@ -25,7 +25,7 @@ func Installed(name string) bool {
 }
 
 // Execute the shell command
-func Execute(cmd string, args []string) bool {
+func Execute(cmd string, args ...string) bool {
 	i := Installed(cmd)
 	if i == false {
 		_ = fmt.Errorf("%s is not installed ", cmd)
