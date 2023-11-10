@@ -35,7 +35,6 @@ func Execute(cmd string, args ...string) (error, string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(string(stdout))
 	fmt.Println("command executed successfully")
 	return nil, string(stdout)
 }
