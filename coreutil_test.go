@@ -7,19 +7,20 @@ import (
 	"testing"
 )
 
-func execute(t *testing.T, cmd string) {
-	i := Execute(cmd)
-	if i == false {
+//func execute(t *testing.T, cmd string) {
+//	err, i := Execute(cmd)
+//	if err != nil {
+//		t.Fatalf("%s is not installed !!!\n", cmd)
+//	}
+//	fmt.Printf("%t\n", i)
+//}
+
+func execute(t *testing.T, cmd string, args ...string) {
+	err, i := Execute(cmd, args...)
+	if err != nil {
 		t.Fatalf("%s is not installed !!!\n", cmd)
 	}
-	fmt.Printf("%t\n", i)
-}
-func executeWithArgs(t *testing.T, cmd string, args ...string) {
-	i := Execute(cmd, args...)
-	if i == false {
-		t.Fatalf("%s is not installed !!!\n", cmd)
-	}
-	fmt.Printf("%t\n", i)
+	fmt.Printf("%s\n", i)
 }
 func TestExecuteLS(t *testing.T) {
 	execute(t, "ls")
@@ -34,5 +35,5 @@ func TestExecuteLSCPU(t *testing.T) {
 }
 
 func TestExecuteWithArgs(t *testing.T) {
-	executeWithArgs(t, "ping", "-c3", "192.168.1.1")
+	execute(t, "ping", "-c3", "localhost")
 }
