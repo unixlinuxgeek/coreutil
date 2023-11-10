@@ -7,14 +7,6 @@ import (
 	"testing"
 )
 
-//func execute(t *testing.T, cmd string) {
-//	err, i := Execute(cmd)
-//	if err != nil {
-//		t.Fatalf("%s is not installed !!!\n", cmd)
-//	}
-//	fmt.Printf("%t\n", i)
-//}
-
 func execute(t *testing.T, cmd string, args ...string) {
 	err, i := Execute(cmd, args...)
 	if err != nil {
