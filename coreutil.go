@@ -23,7 +23,7 @@ func Installed(name string) bool {
 	return true
 }
 
-// Execute the shell command
+// Execute the shell command (not builtin)
 func Execute(cmd string, args ...string) (error, string) {
 	i := Installed(cmd)
 	if i == false {
