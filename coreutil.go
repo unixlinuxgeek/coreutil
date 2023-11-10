@@ -5,6 +5,8 @@ package coreutil
 import (
 	"errors"
 	"fmt"
+	"log"
+	"os"
 	"os/exec"
 )
 
@@ -23,13 +25,19 @@ func Installed(name string) bool {
 }
 
 // Execute the shell command
-func Execute(cmd string) bool {
+func Execute(cmd string, args []string) bool {
 	i := Installed(cmd)
 	if i == false {
 		_ = fmt.Errorf("%s is not installed ", cmd)
 		return false
 	}
 	// Do something...
-	fmt.Println("command executed successfully")
+	c := exec.Command(cmd, args...)
+	stdout, err := c.Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprint(os.Stdout, stdout)
+	//fmt.Println("command executed successfully")
 	return true
 }
