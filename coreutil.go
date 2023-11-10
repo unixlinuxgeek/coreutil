@@ -24,20 +24,18 @@ func Installed(name string) bool {
 }
 
 // Execute the shell command
-func Execute(cmd string, args ...string) bool {
+func Execute(cmd string, args ...string) (error, string) {
 	i := Installed(cmd)
 	if i == false {
 		log.Fatalf("%s is not installed ", cmd)
 	}
-	// Do something...
-	if len(args) > 0 {
-		c := exec.Command(cmd, args...)
-		stdout, err := c.Output()
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(string(stdout))
+
+	c := exec.Command(cmd, args...)
+	stdout, err := c.Output()
+	if err != nil {
+		log.Fatal(err)
 	}
+	fmt.Println(string(stdout))
 	fmt.Println("command executed successfully")
-	return true
+	return nil, string(stdout)
 }
